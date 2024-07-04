@@ -9,9 +9,8 @@ Hello World!
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="top"
-        data-theme="preferred_color_scheme"
+        data-theme="light_tritanopia"
         data-lang="zh-CN"
-        data-loading="lazy"
         crossorigin="anonymous"
         async>
 </script>
