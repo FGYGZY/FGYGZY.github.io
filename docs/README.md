@@ -1,4 +1,5 @@
-Hello World!
+# Hello World!
+![FGYGZY's Github Stats](https://github-readme-stats.vercel.app/api?username=FGYGZY&show_icons=true&hide=issues&bg_color=30,2193b0,6dd5ed)
 <script src="https://giscus.app/client.js"
         data-repo="FGYGZY/FGYGZY.github.io"
         data-repo-id="R_kgDOMR27WA"
