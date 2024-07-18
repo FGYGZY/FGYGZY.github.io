@@ -49,6 +49,46 @@ Hello
 > echo $?
 0
 ```
-同大多数主流语言一样，shell也使用0来表示正确无错误的指令。
+同大多数主流语言一样，shell也使用0来表示正确无错误的指令。类似的，当尝试执行
+```bash
+> grep foobar mcd.sh
+> echo $?
+1
+```
+由于`mcd.sh`中并不存在`foobar`字符串，便不会输出任何东西耳机报出错误代码1
+特殊的，`true`命令的错误代码始终为0，而'false'命令的错误代码始终为1
+## 简单的条件语句
+除了if-else之外，我们可以利用一些逻辑运算符完成简单的条件语句。例如逻辑或`||`,只有当前面的命令失败，才会执行后面的命令:
+```bash
+> false || echo "Oops fail"
+Oops fail
+> true || echo "Will not be printed "
+>
+```
+逻辑与`&&`，当前一条命令失败时，后面的命令将被跳过。
+```bash
+> true && echo "Things went well"
+Things went well
+> false && echo "This will not be printed"
+>
+```
+此外，我们可以通过`;`连接两个命令在一行写出。
+## 命令替换
+使用`$`
+```bash
+> foo=$(pwd)
+```
+也可以直接在字符串中展开(注意使用双引号!!)
+```bash
+> echo "We are in $(pwd)"
+We are in /Users/.......
+```
+## 进程替换
+命令替换会将命令结果替换为字符串，而进程替换略有不同。它会将命令的结果保存为一个临时文件，在将其文件路径替换输入。例如:
+```bash
+> cat <(ls) <(ls ..)
+```
+
+
 
 
