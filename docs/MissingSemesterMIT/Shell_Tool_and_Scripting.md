@@ -84,10 +84,29 @@ Things went well
 We are in /Users/.......
 ```
 ## 进程替换
-命令替换会将命令结果替换为字符串，而进程替换略有不同。它会将命令的结果保存为一个临时文件，在将其文件路径替换输入。例如:
+命令替换会将命令结果替换为字符串，而进程替换略有不同。它会在内部执行命令，并命令的结果保存为一个临时文件，在将其文件路径替换输入。例如:
 ```bash
 > cat <(ls) <(ls ..)
 ```
+这会将父文件夹与自己执行ls的结果合并再输出。
+
+## Example
+```bash
+#!/bin/bash
+echo "Starting Program at $(date)" # date输出当前日期，可指定格式
+echo "Running program $0 with $# arguments with pid $$" $0为程序名，
+for file in "$@"; do
+    grep foobar "$file" > /dev/null 2> /dev/null
+    # When pattern is no found, grep has exit status
+    # We redirect STDOUT and STDERR to a null register fille about them
+    if [[ "$?" -ne 0 ]]:  then
+        echo "File $file does not have any foobar adding one"
+        echo "# foobar" >> "$file"
+    fi
+done
+```
+
+
 
 
 
